@@ -116,20 +116,20 @@
                             <span>外国人为外国人的中文服务</span>
 
                             <p>Chinese for non-Chinese by non-Chinese </p>
-                            <a class="buynow" href="#about">About us</a><a class="buynow ggg" href="#">Register</a>
+                            <a class="buynow" href="#about">About us</a><a class="buynow ggg" href=".offer">Register</a>
 
                         </div>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="second-slide" src="images/banner-2.jpg" alt="Second slide">
+                    <img class="second-slide" src="images/banner.jpg" alt="Second slide">
                     <div class="container">
                         <div class="carousel-caption relative">
                             <h1>Affordable</h1>
                             <span>Translation Services</span>
 
                             <p>QEC consistently provides affordable translation services <br /> at much lower price than any traditional agency</p>
-                            <a class="buynow" href="#about">About us</a><a class="buynow ggg" href="#">Register</a>
+                            <a class="buynow" href="#about">About us</a><a class="buynow ggg" href=".offer">Register</a>
 
                         </div>
                     </div>
@@ -138,13 +138,15 @@
                     <img class="third-slide" src="images/banner.jpg" alt="Third slide">
                     <div class="container">
                         <div class="carousel-caption relative">
+                      
                             <h1>Coming Soon!</h1>
                             <span>QEC Workbooks</span>
 
                             <p>Practice all that you have learned, with our QEC Workbooks! </p>
-                            <a class="buynow" href="#about">About us</a><a class="buynow ggg" href="#">Register</a>
+                            <a class="buynow" href="#about">About us</a><a class="buynow ggg" href=".offer">Register</a>
 
                         </div>
+                     
                     </div>
                 </div>
             </div>
@@ -261,20 +263,20 @@
                 <div class="row">
                     <div class="col-xl-9 col-lg-6 col-md-6 col-sm-9" style="display: block; margin-left: auto;margin-right: auto;" >
 
-                        <form class="main_form">
+                        <form class="main_form" action="/action_page.php" method="get" id="nameform">
                             <div class="row">
 
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                    <input class="form-control" placeholder="Name" type="text" name="Name">
+                                    <input class="form-control" placeholder="Name" type="text" name="Name" >
                                 </div>
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                    <input class="form-control" placeholder="Email" type="text" name="Email">
+                                    <input class="form-control" placeholder="Email" type="text" name="Email" >
                                 </div>
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                    <input class="form-control" placeholder="Phone" type="text" name="Phone">
+                                    <input class="form-control" placeholder="Phone" type="text" name="Phone" >
                                 </div>
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                                    <textarea class="textarea" placeholder="Message" type="text" name="Message"></textarea>
+                                    <textarea class="textarea" placeholder="Message" type="text" name="Message" ></textarea>
                                 </div>
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                     <button class="send">Send</button>
@@ -309,7 +311,7 @@
                             <ul class="Links_footer">
                                 <li><img src="icon/3.png" alt="#" /> <a href="Courses.html"> Courses</a> </li>
                                 <li><img src="icon/3.png" alt="#" /> <a href="Translation.html">Translation Service</a> </li>
-                                <li><img src="icon/3.png" alt="#" /> <a href="#">Blogs</a> </li>
+                                <li><img src="icon/3.png" alt="#" /> <a href="Blog.html">Blogs</a> </li>
                                 <li><img src="icon/3.png" alt="#" /> <a href="Tutoring.html">Private Tutoring</a> </li>
                                
                             </ul>
@@ -409,6 +411,50 @@
     <!-- google map js -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8eaHt9Dh5H57Zh0xVTqxVdBFCvFMqFjQ&callback=initMap"></script>
     <!-- end google map js -->
+
+    <?php
+    // define variables and set to empty values
+    $nameErr = $emailErr =  "";
+    $name = $email = "";
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (empty($_POST["name"])) {
+    $nameErr = "Name is required";
+    } else {
+    $name = test_input($_POST["name"]);
+    // check if name only contains letters and whitespace
+    if (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {
+    $nameErr = "Only letters and white space allowed";
+    }
+    }
+
+    if (empty($_POST["email"])) {
+    $emailErr = "Email is required";
+    } else {
+    $email = test_input($_POST["email"]);
+    // check if e-mail address is well-formed
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $emailErr = "Invalid email format";
+    }
+    }
+
+    
+
+    if (empty($_POST["message"])) {
+    $message = "";
+    } else {
+    $comment = test_input($_POST["comment"]);
+    }
+
+  
+
+    function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+    }
+    ?>
 </body>
 
 </html>
