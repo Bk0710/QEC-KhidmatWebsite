@@ -30,7 +30,7 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
 </head>
-
+<body>
 <!-- header -->
 <header>
     <!-- header inner -->
@@ -241,6 +241,49 @@
     <!-- google map js -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8eaHt9Dh5H57Zh0xVTqxVdBFCvFMqFjQ&callback=initMap"></script>
     <!-- end google map js -->
+    <?php
+    // define variables and set to empty values
+    $nameErr = $emailErr =  "";
+    $name = $email = "";
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (empty($_POST["name"])) {
+    $nameErr = "Name is required";
+    } else {
+    $name = test_input($_POST["name"]);
+    // check if name only contains letters and whitespace
+    if (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {
+    $nameErr = "Only letters and white space allowed";
+    }
+    }
+
+    if (empty($_POST["email"])) {
+    $emailErr = "Email is required";
+    } else {
+    $email = test_input($_POST["email"]);
+    // check if e-mail address is well-formed
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $emailErr = "Invalid email format";
+    }
+    }
+
+
+
+    if (empty($_POST["message"])) {
+    $message = "";
+    } else {
+    $comment = test_input($_POST["comment"]);
+    }
+
+
+
+    function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+    }
+    ?>
 </body>
 
 </html>
