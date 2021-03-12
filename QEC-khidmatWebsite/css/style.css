@@ -1654,7 +1654,37 @@ font-weight: 500;
     background-color: #052501;
    
 }
-#myCarousel .carousel-indicators li { margin-bottom: 40px;}
+
+.myblog {
+    align-content:center;
+    width: 80%;
+    padding: 30px;
+    margin-top:20px;
+    display: block;
+    margin-left:auto;
+    margin-right: auto;
+
+
+}
+
+.blog {
+    display: block;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.center {
+    text-align: left;
+    font-size: 20px;
+    display: block;
+    line-height: inherit;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+
+#myCarousel .carousel-indicators li {
+    margin-bottom: 40px;
+}
 .banner-main .carousel-item img {width: 100%;}
 #myCarousel a.carousel-control-prev {display: none;}
 #myCarousel a.carousel-control-next {display: none;}
@@ -2321,3 +2351,33 @@ line-height: 30px;}
 .special-page .relative  {text-align:center !important; }
 
 .special-page .footer {margin-top: 90px;}
+
+.mobile-social-share {
+    background: none repeat scroll 0 0 #EEEEEE;
+    display: block !important;
+    min-height: 70px !important;
+    margin: 50px 0;
+}
+
+
+
+.mobile-social-share h3 {
+    color: inherit;
+    float: left;
+    font-size: 15px;
+    line-height: 20px;
+    margin: 25px 25px 0 25px;
+}
+
+.share-group {
+    float: right;
+    margin: 18px 25px 0 0;
+}
+
+.btn-group {
+    display: inline-block;
+    font-size: 0;
+    position: relative;
+    vertical-align: middle;
+    white-space: nowrap;
+}
